@@ -3,7 +3,7 @@
     height: 300px;
 }
 
-.title {
+.htitle {
     color: blue;
     font-size: 24px;
     text-align: center;
@@ -68,7 +68,7 @@ label {
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+   height: 34px;
 }
 
 /* Hide default HTML checkbox */
@@ -104,11 +104,11 @@ label {
 }
 
 input:checked + .slider {
-  background-color: #2196F3;
+  background-color: red;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px red;
 }
 
 input:checked + .slider:before {
@@ -127,6 +127,21 @@ input:checked + .slider:before {
 }
 
 .powerbutton {
-    width: 75%;
-    margin: auto;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.blockedurls {
+    margin-top: 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 10px;
+    text-align: center;
+}
+
+.urlelement {
+  border: 1px solid gray;
+  padding: 5px;
 }
