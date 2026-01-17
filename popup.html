@@ -14,6 +14,12 @@
                 <input type="text" id="urlinput" name="urlinput" class="url-input"><br>
                 <input type="submit" value="Add URL" class="submit" id="urlsubmit">
             </div>
+            <!-- time limit per website before it is forced close-->
+            <div class="inputdiv">
+                <label class="inputlabel">Close after (seconds):</label>
+                <input type="number" id="timerinput" name="timerinput" class="time-limit-input" min="0"><br>
+                <button id="timersubmit" class="submit">Save</button>
+            </div>
             <div class="blockedurls">
                 <h3 style="text-align: center;">Blocked URLs</h3>
                 <div class="blockedlist">
@@ -22,7 +28,7 @@
             </div>
         </div>
         <div class="main" id="mainDiv">
-            <h1 class="htitle">BunnyBlocker</h1>
+            <h1 class="htitle">SmartBlocker</h1>
             <div class="settingsbutton" id="settingsButton">&#9881;</div>
             <div class="helpButton" id="helpButton">?</div>
             <div class="powerbutton">

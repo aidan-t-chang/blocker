@@ -1,3 +1,9 @@
+chrome.runtime.sendMessage({ action: 'getTimer' }, (response) => {
+    if (response && response.scheduledTime) {
+        showCountdown(response.scheduledTime);
+    }
+})
+
 document.addEventListener('DOMContentLoaded', () => {
     const settingsButton = document.getElementById('settingsButton');
     const backButton = document.getElementById('backButton');

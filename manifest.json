@@ -1,6 +1,6 @@
 {
-  "name": "BunnyBlocker",
-  "description": "A smart app blocker. All roads lead to Rome.",
+  "name": "SmartBlocker",
+  "description": "A smarter way to block distracting websites.",
   "version": "1.0",
   "manifest_version": 3,
   "content_scripts": [
@@ -16,5 +16,10 @@
   },
   "background": {
     "service_worker": "background.js"
-  }
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "alarms"
+  ]
 }

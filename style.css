@@ -145,3 +145,7 @@ input:checked + .slider:before {
   border: 1px solid gray;
   padding: 5px;
 }
+
+.title {
+  text-align: center;
+}
