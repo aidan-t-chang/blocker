@@ -149,3 +149,9 @@ input:checked + .slider:before {
 .title {
   text-align: center;
 }
+
+.status-message {
+  margin-top: 10px;
+  font-size: 14px;
+  min-height: 20px;
+}

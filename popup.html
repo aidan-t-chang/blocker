@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
-        <script src="content.js" defer></script>
+        <script src="popup.js" defer></script>
     </head>
     <body>
         <div class="settings" style="display:none;" id="settingsDiv">
@@ -17,14 +17,13 @@
             <!-- time limit per website before it is forced close-->
             <div class="inputdiv">
                 <label class="inputlabel">Close after (seconds):</label>
-                <input type="number" id="timerinput" name="timerinput" class="time-limit-input" min="0"><br>
+                <input type="number" id="timerinput" name="timerinput" class="time-limit-input" min="0" placeholder="5"><br>
                 <button id="timersubmit" class="submit">Save</button>
+                <p id="status-message" class="status-message"></p>
             </div>
             <div class="blockedurls">
                 <h3 style="text-align: center;">Blocked URLs</h3>
-                <div class="blockedlist">
-                    <p class="urlelement">filler</p>
-                </div>
+                <div class="blockedlist" id="blockedlist"></div>
             </div>
         </div>
         <div class="main" id="mainDiv">

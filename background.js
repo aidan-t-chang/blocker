@@ -48,5 +48,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
                 sendResponse({ scheduledTime: null });
             }
         })
+
+        return true;
     }
 })

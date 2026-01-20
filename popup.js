@@ -12,11 +12,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const time = parseInt(timerInput.value);
         if (time >= 0 && time <= 59) {
             chrome.storage.local.set({ 'blockTimer': time }, () => {
-                alert('Timer set to ' + time + ' seconds.');
+                showToast(`Timer set to ${time} seconds.`, 'green');
             });
         } else if (time > 59) {
             chrome.storage.local.set({ 'blockTimer': 59}, () => {
-                alert('Maximum timer is 59 seconds. Timer set to 59 seconds.');
+                showToast('Maximum timer is 59 seconds. Timer set to 59 seconds.', 'red');
             });
         }
     });
@@ -37,11 +37,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     updateBlockedList();
+
+    const settingsButton = document.getElementById('settingsButton');
+    const backButton = document.getElementById('backButton');
+    if (!backButton) {
+        return;
+    }
+    if (!settingsButton) {
+        return;
+    }
+
+    settingsButton.addEventListener('click', () => {
+        document.getElementById('settingsDiv').style.display = 'block';
+        document.getElementById('mainDiv').style.display = 'none';
+    });
+
+    backButton.addEventListener('click', () => {
+        document.getElementById('settingsDiv').style.display = 'none';
+        document.getElementById('mainDiv').style.display = 'block';
+    });
 })
 
 async function updateBlockedList() {
     const blockedlistDiv = document.getElementById('blockedlist');
-    blockedlistDiv.innerHTML = '';
+    if (blockedlistDiv != null) {
+        blockedlistDiv.innerHTML = '';
+    }
     const allItems = await chrome.storage.local.get(null);
     for (const url in allItems) {
         if (url === 'blockTimer') {
@@ -51,5 +72,17 @@ async function updateBlockedList() {
         p.className = 'urlelement';
         p.textContent = url;
         blockedlistDiv.appendChild(p);
+    }
+}
+
+function showToast(message, color) {
+    const toast = document.getElementById('status-message');
+    if (toast) {
+        toast.textContent = message;
+        toast.style.color = color || 'black';
+
+        setTimeout(() => {
+            toast.textContent = '';
+        }, 3000);
     }
 }
