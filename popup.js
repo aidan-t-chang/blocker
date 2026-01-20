@@ -2,6 +2,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const timerInput = document.getElementById('timerinput');
     const timerSubmit = document.getElementById('timersubmit');
 
+    const toggle = document.getElementById('toggle');
+
+    chrome.storage.local.get(['isEnabled'], (result) => {
+        if (result.isEnabled === undefined) {
+            toggle.checked = true;
+            chrome.storage.local.set({ isEnabled: true });
+        } else {
+            toggle.checked = result.isEnabled;
+        }
+    })
+
+    toggle.addEventListener('change', () => {
+        const isEnabled = toggle.checked;
+        chrome.storage.local.set({ isEnabled: isEnabled }, () => {
+            const status = isEnabled ? 'enabled' : 'disabled';
+
+            showToast(`Extension ${status}.`, isEnabled ? 'green' : 'red');
+        });
+    });
+
     chrome.storage.local.get(['blockTimer'], (result) => {
         if (result.blockTimer) {
             timerInput.value = result.blockTimer;
@@ -71,6 +91,11 @@ async function updateBlockedList() {
         const p = document.createElement('p');
         p.className = 'urlelement';
         p.textContent = url;
+        p.id = `url-${url}`;
+        p.addEventListener('click', async () => {
+            await chrome.storage.local.remove(url);
+            updateBlockedList();
+        });
         blockedlistDiv.appendChild(p);
     }
 }
