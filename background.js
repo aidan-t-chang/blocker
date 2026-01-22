@@ -16,7 +16,11 @@ function checkAndStartTimer(tabId, url) {
                 break;
             }
         }
+        const isEnabled = items.isEnabled;
 
+        if (isEnabled === false) {
+            isBlocked = false;
+        }
         if (isBlocked) {
             if (timerDuration > 0) {
                 console.log(`Starting timer for ${url} for ${timerDuration} seconds.`);
