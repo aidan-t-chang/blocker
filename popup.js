@@ -58,24 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateBlockedList();
 
-    const settingsButton = document.getElementById('settingsButton');
-    const backButton = document.getElementById('backButton');
-    if (!backButton) {
-        return;
-    }
-    if (!settingsButton) {
-        return;
-    }
-
-    settingsButton.addEventListener('click', () => {
-        document.getElementById('settingsDiv').style.display = 'block';
-        document.getElementById('mainDiv').style.display = 'none';
-    });
-
-    backButton.addEventListener('click', () => {
-        document.getElementById('settingsDiv').style.display = 'none';
-        document.getElementById('mainDiv').style.display = 'block';
-    });
 })
 
 async function updateBlockedList() {
@@ -84,8 +66,11 @@ async function updateBlockedList() {
         blockedlistDiv.innerHTML = '';
     }
     const allItems = await chrome.storage.local.get(null);
+
+    const settingsKeys = ['blockTimer', 'isEnabled'];
+
     for (const url in allItems) {
-        if (url === 'blockTimer') {
+        if (settingsKeys.includes(url)) {
             continue;
         }
         const p = document.createElement('p');

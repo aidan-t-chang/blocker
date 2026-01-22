@@ -9,8 +9,9 @@ function checkAndStartTimer(tabId, url) {
         const timerDuration = items.blockTimer || 10;
 
         let isBlocked = false;
+        const settingsKeys = ['blockTimer', 'isEnabled'];
         for (const key in items) {
-            if (key !== 'blockTimer' && url.includes(key)) {
+            if (!settingsKeys.includes(key) && url.includes(key)) {
                 isBlocked = true;
                 break;
             }

@@ -6,9 +6,15 @@
         <script src="popup.js" defer></script>
     </head>
     <body>
-        <div class="settings" style="display:none;" id="settingsDiv">
-            <h1 class="title">Settings</h1>
-            <div class="backbutton" id="backButton">&#8592;</div>
+        <div class="main" id="mainDiv">
+            <h1 class="htitle">SmartBlocker</h1>
+            <div class="helpButton" id="helpButton">?</div>
+            <div class="powerbutton">
+                <label class="switch">
+                    <input type="checkbox" id="toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
             <div class="inputdiv">
                 <label for="urlinput">Add URLs to block</label><br>
                 <input type="text" id="urlinput" name="urlinput" class="url-input"><br>
@@ -24,17 +30,6 @@
             <div class="blockedurls">
                 <h3 style="text-align: center;">Blocked URLs</h3>
                 <div class="blockedlist" id="blockedlist"></div>
-            </div>
-        </div>
-        <div class="main" id="mainDiv">
-            <h1 class="htitle">SmartBlocker</h1>
-            <div class="settingsbutton" id="settingsButton">&#9881;</div>
-            <div class="helpButton" id="helpButton">?</div>
-            <div class="powerbutton">
-                <label class="switch">
-                    <input type="checkbox" id="toggle">
-                    <span class="slider round"></span>
-                </label>
             </div>
         </div>
     </body>
