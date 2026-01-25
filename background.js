@@ -25,6 +25,9 @@ function checkAndStartTimer(tabId, url) {
             if (timerDuration > 0) {
                 console.log(`Starting timer for ${url} for ${timerDuration} seconds.`);
                 chrome.alarms.create(`blockTimer-${tabId}`, { delayInMinutes: timerDuration / 60 });
+
+                const scheduledTime = Date.now() + (timerDuration * 1000);
+                chrome.tabs.sendMessage(tabId, { action: 'timerStarted', scheduledTime: scheduledTime }, () => chrome.runtime.lastError);
             } else {
                 chrome.tabs.remove(tabId);
             }

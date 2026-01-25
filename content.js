@@ -4,17 +4,23 @@ chrome.runtime.sendMessage({ action: 'getTimer' }, (response) => {
     }
 });
 
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'timerStarted' && request.scheduledTime) {
+        showCountdown(request.scheduledTime);
+    }
+});
+
 function showCountdown(endTime) {
     const countdownDiv = document.createElement('div');
     countdownDiv.id = 'countdownDiv';
     countdownDiv.style.position = 'fixed';
-    countdownDiv.style.bottom = '10px';
+    countdownDiv.style.top = '10px';
     countdownDiv.style.right = '10px';
-    countdownDiv.style.padding = '10px';
+    countdownDiv.style.padding = '20px';
     countdownDiv.style.backgroundColor = 'red';
     countdownDiv.style.color = 'white';
-    countdownDiv.style.fontSize = '16px';
-    countdownDiv.style.zIndex = '9999999999';
+    countdownDiv.style.fontSize = '45px';
+    countdownDiv.style.zIndex = '2147483647';
     countdownDiv.style.borderRadius = '5px';
     document.body.appendChild(countdownDiv);
 
