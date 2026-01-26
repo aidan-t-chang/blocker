@@ -1,74 +1,94 @@
 .settingspage {
-    width: 500px;
-    height: 300px;
+  width: 500px;
+  height: 350px;
 }
 
 .htitle {
-    color: blue;
-    font-size: 24px;
-    text-align: center;
+  color: blue;
+  font-size: 24px;
+  text-align: center;
 }
 
 label {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .url-input {
-    width: 75%;
-    height: 20px;
+  width: 75%;
+  height: 20px;
 }
 
 .submit {
-    margin-top: 10px;
-    height: 26px;
+  margin-top: 10px;
+  height: 26px;
 }
 
 .inputdiv {
-    margin-top: 20px;
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 10px;
+  margin-top: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  transition: transform 0.2s ease;
+}
+
+.inputdiv:hover {
+  transform: translate(2px, -2px);
+}
+
+.blockedurls {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.blockedurls:hover {
+  transform: translate(2px, -2px);
 }
 
 .settingsbutton {
-    position: absolute;
-    top: 18px;
-    left: 18px;
-    font-size: 18px;
-    user-select: none;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-size: 18px;
+  user-select: none;
 }
 
 .settingsbutton:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .backbutton {
-    position: absolute;
-    top: 18px;
-    left: 18px;
-    font-size: 18px;
-    user-select: none;
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-size: 18px;
+  user-select: none;
 }
 
 .backbutton:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .helpButton {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    font-size: 18px;
-    user-select: none;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 18px;
+  user-select: none;
 }
 
 /* The switch - the box around the slider */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-   height: 34px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
 }
 
 /* Hide default HTML checkbox */
@@ -133,17 +153,18 @@ input:checked + .slider:before {
   justify-content: center;
 }
 
-.blockedurls {
-    margin-top: 20px;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 10px;
-    text-align: center;
-}
 
 .urlelement {
   border: 1px solid gray;
   padding: 5px;
+  transition: all 0.5s ease;
+  margin: 0;
+}
+
+.urlelement:hover {
+  cursor: pointer;
+  border-color: red;
+  background-color: #ffdddd;
 }
 
 .title {
@@ -154,4 +175,9 @@ input:checked + .slider:before {
   margin-top: 10px;
   font-size: 14px;
   min-height: 20px;
+}
+
+.blockedlist {
+  overflow-y: auto;
+  max-height: 100px;
 }

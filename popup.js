@@ -8,8 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (result.isEnabled === undefined) {
             toggle.checked = true;
             chrome.storage.local.set({ isEnabled: true });
+            updateBorders('red');
         } else {
             toggle.checked = result.isEnabled;
+            updateBorders(result.isEnabled ? 'red' : 'green');
         }
     })
 
@@ -19,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const status = isEnabled ? 'enabled' : 'disabled';
 
             showToast(`Extension ${status}.`, isEnabled ? 'green' : 'red');
+            updateBorders(isEnabled ? 'red' : 'green');
         });
     });
 
@@ -94,5 +97,17 @@ function showToast(message, color) {
         setTimeout(() => {
             toast.textContent = '';
         }, 3000);
+    }
+}
+
+function updateBorders(color) {
+    const inputs = document.querySelectorAll('.inputdiv');
+    const blockedurls = document.querySelector('.blockedurls');
+
+    inputs.forEach(input => {
+        input.style.borderColor = color;
+    });
+    if (blockedurls) {
+        blockedurls.style.borderColor = color;
     }
 }
