@@ -11,12 +11,23 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function showCountdown(endTime) {
+    const borderDiv = document.createElement('div');
+    borderDiv.style.position = 'fixed';
+    borderDiv.style.top = '0';
+    borderDiv.style.left = '0';
+    borderDiv.style.width = '100%';
+    borderDiv.style.height = '100%';
+    borderDiv.style.border = "8px solid red";
+    borderDiv.style.boxSizing = "border-box";
+    borderDiv.style.zIndex = '2147483646';
+    borderDiv.style.pointerEvents = 'none';
+    document.body.appendChild(borderDiv);
     const countdownDiv = document.createElement('div');
     countdownDiv.id = 'countdownDiv';
     countdownDiv.style.position = 'fixed';
     countdownDiv.style.top = '10px';
     countdownDiv.style.right = '10px';
-    countdownDiv.style.padding = '20px';
+    countdownDiv.style.padding = '15px';
     countdownDiv.style.backgroundColor = 'red';
     countdownDiv.style.color = 'white';
     countdownDiv.style.fontSize = '45px';
