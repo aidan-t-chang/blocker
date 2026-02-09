@@ -61,6 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     updateBlockedList();
 
+    document.getElementById('helpButton').addEventListener('click', () => {
+        document.getElementById('mainDiv').style.display = 'none';
+        document.getElementById('help').style.display = 'block';
+    })
+
+    document.getElementById('backButton').addEventListener('click', () => {
+        document.getElementById('mainDiv').style.display = 'block';
+        document.getElementById('help').style.display = 'none';
+    })
 })
 
 async function updateBlockedList() {

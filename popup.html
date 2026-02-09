@@ -20,7 +20,6 @@
                 <input type="text" id="urlinput" name="urlinput" class="url-input"><br>
                 <input type="submit" value="Add URL" class="submit" id="urlsubmit">
             </div>
-            <!-- time limit per website before it is forced close-->
             <div class="inputdiv">
                 <label class="inputlabel">Close after (seconds):</label>
                 <input type="number" id="timerinput" name="timerinput" class="time-limit-input" min="0" placeholder="5"><br>
@@ -31,6 +30,18 @@
                 <h3 style="text-align: center;">Blocked URLs</h3>
                 <div class="blockedlist" id="blockedlist"></div>
             </div>
+        </div>
+        <div class="help" id="help" style="display: none;">
+            <div class="helpButton" id="backButton">←</div>
+            <p>A problem that I found with most app blockers is that they stop you immediately from looking at distracting websites.
+                At this point, your brain is hardwired for that dopamine hit, so you just find a way around the blocker and end up on the same website again. SmartBlocker is different. 
+                Now, you can still get that dopamine hit but still stay on task. With time off task being no more than one minute (I recommend 5 seconds!), you can still get that dopamine hit but not enough to get you off task.
+            </p>
+            <h2>How to Use SmartBlocker</h2>
+            <p>1. Toggle the power switch to enable or disable blocking.</p>
+            <p>2. To add a URL to block, enter it in the input field and click "Add URL". You can use wildcards like <code>*</code> to block multiple URLs (e.g., <code>*example.com*</code>).</p>
+            <p>3. To set a time limit for blocking, enter the number of seconds in the "Close after" field and click "Save". This will automatically block URLs after the specified time.</p>
+            <p>4. The list of currently blocked URLs is displayed at the bottom. You can remove any URL from the list by clicking on them.</p>
         </div>
     </body>
 </html>
