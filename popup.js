@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chrome.storage.local.set({ isEnabled: isEnabled }, () => {
             const status = isEnabled ? 'enabled' : 'disabled';
 
-            showToast(`Extension ${status}.`, isEnabled ? 'green' : 'red');
+            showStatus(`Extension ${status}.`, isEnabled ? 'green' : 'red');
             updateBorders(isEnabled ? 'red' : 'green');
         });
     });
@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const time = parseInt(timerInput.value);
         if (time >= 0 && time <= 59) {
             chrome.storage.local.set({ 'blockTimer': time }, () => {
-                showToast(`Timer set to ${time} seconds.`, 'green');
+                showStatus(`Timer set to ${time} seconds.`, 'green');
             });
         } else if (time > 59) {
             chrome.storage.local.set({ 'blockTimer': 59}, () => {
-                showToast('Maximum timer is 59 seconds. Timer set to 59 seconds.', 'red');
+                showStatus('Maximum timer is 59 seconds. Timer set to 59 seconds.', 'red');
             });
         }
     });
@@ -54,8 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     urlinput.value = '';
                     updateBlockedList();
                 });
+                showStatus(`Added ${url} to blocked list.`, 'green');   
             } else {
                 urlinput.value = 'Please input a valid URL.';
+                showStatus('Please input a valid URL.', 'red');
             }
         });
     }
@@ -91,21 +93,10 @@ async function updateBlockedList() {
         p.id = `url-${url}`;
         p.addEventListener('click', async () => {
             await chrome.storage.local.remove(url);
+            showStatus(`Removed ${url} from blocked list.`, 'green');
             updateBlockedList();
         });
         blockedlistDiv.appendChild(p);
-    }
-}
-
-function showToast(message, color) {
-    const toast = document.getElementById('status-message');
-    if (toast) {
-        toast.textContent = message;
-        toast.style.color = color || 'black';
-
-        setTimeout(() => {
-            toast.textContent = '';
-        }, 3000);
     }
 }
 
@@ -119,4 +110,15 @@ function updateBorders(color) {
     if (blockedurls) {
         blockedurls.style.borderColor = color;
     }
+}
+
+function showStatus(message, color) {
+    const statusMessage = document.getElementById('status-message');
+    statusMessage.textContent = message;
+    statusMessage.classList.add('show');
+    statusMessage.style.color = color || 'black';
+
+    setTimeout(() => {
+        statusMessage.classList.remove('show');
+    }, 2500);
 }

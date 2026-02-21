@@ -6,6 +6,7 @@
         <script src="popup.js" defer></script>
     </head>
     <body>
+        <p id="status-message" class="status-message"></p>
         <div class="main" id="mainDiv">
             <h1 class="htitle">SmartBlocker</h1>
             <div class="helpButton" id="helpButton">?</div>
@@ -24,7 +25,6 @@
                 <label class="inputlabel">Close after (seconds):</label>
                 <input type="number" id="timerinput" name="timerinput" class="time-limit-input" min="0" placeholder="5"><br>
                 <button id="timersubmit" class="submit">Save</button>
-                <p id="status-message" class="status-message"></p>
             </div>
             <div class="blockedurls">
                 <h3 style="text-align: center;">Blocked URLs</h3>
@@ -39,9 +39,10 @@
             </p>
             <h2>How to Use SmartBlocker</h2>
             <p>1. Toggle the power switch to enable or disable blocking.</p>
-            <p>2. To add a URL to block, enter it in the input field and click "Add URL". You can use wildcards like <code>*</code> to block multiple URLs (e.g., <code>*example.com*</code>).</p>
+            <p>2. To add a URL to block, enter it in the input field and click "Add URL". You can use wildcards like <code>*</code> to block multiple URLs (e.g., <code>youtube.com/*</code>).</p>
             <p>3. To set a time limit for blocking, enter the number of seconds in the "Close after" field and click "Save". This will automatically block URLs after the specified time.</p>
             <p>4. The list of currently blocked URLs is displayed at the bottom. You can remove any URL from the list by clicking on them.</p>
         </div>
+        <div class="margin-div"></div>
     </body>
 </html>
