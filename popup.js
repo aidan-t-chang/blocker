@@ -101,14 +101,12 @@ async function updateBlockedList() {
 }
 
 function updateBorders(color) {
-    const inputs = document.querySelectorAll('.inputdiv');
-    const blockedurls = document.querySelector('.blockedurls');
-
-    inputs.forEach(input => {
-        input.style.borderColor = color;
-    });
-    if (blockedurls) {
-        blockedurls.style.borderColor = color;
+    const body = document.querySelector('.extension-body');
+    
+    if (color === 'red') {
+        body.classList.add('is-active');
+    } else {
+        body.classList.remove('is-active');
     }
 }
 
